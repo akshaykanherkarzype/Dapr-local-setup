@@ -1,0 +1,32 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: calc
+spec:
+  type: bindings.zeebe.jobworker
+  version: v1
+  metadata:
+    - name: gatewayAddr
+      value: 3.6.248.160:26500
+    - name: gatewayKeepAlive
+      value: 45s
+    - name: usePlainTextConnection
+      value: true
+    - name: workerName
+      value: get-weather-report
+    - name: workerTimeout
+      value: 30s
+    - name: requestTimeout
+      value: 15s
+    - name: jobType
+      value: get-weather-report
+    - name: maxJobsActive
+      value: 32
+    - name: concurrency
+      value: 4
+    - name: pollInterval
+      value: 100ms
+    - name: pollThreshold
+      value: 0.3
+    - name: fetchVariables
+      value: operator, firstOperand, secondOperand
